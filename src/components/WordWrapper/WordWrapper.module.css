@@ -1,8 +1,9 @@
 .word {
-    height: 35px;
+    height: 30px;
     display: flex;
     align-items: center;
-    padding-right: 5px
+    padding-right: 5px;
+    font-size: 14px;
 }
 
 .active {
