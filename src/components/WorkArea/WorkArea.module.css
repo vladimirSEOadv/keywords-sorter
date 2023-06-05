@@ -1,0 +1,58 @@
+.workArea {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid black;
+    border-radius: 15px;
+    padding: 15px;
+    width: 390px;
+    min-height: 85vh;
+    max-height: 86vh;
+
+}
+.active {
+    border: 2px solid chartreuse;
+}
+
+.header {
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.counter {
+    padding-bottom: 15px;
+}
+
+.search {
+    position: relative;
+}
+
+.search__input{
+    width: 96%;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.clearSearchButton {
+    position: absolute;
+    top: -12px;
+    right: 5px;
+    font-size: 15px;
+}
+
+.clearSearchButton:hover {
+
+}
+
+.keywordsSection {
+    height: 100%;
+    overflow-y: scroll;
+    margin-bottom: 10px;
+}
+
+.addNewButton {
+    margin-top: 25px;
+    border: 1px solid gray;
+}

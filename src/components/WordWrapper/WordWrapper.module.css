@@ -1,0 +1,23 @@
+.word {
+    height: 35px;
+    display: flex;
+    align-items: center;
+    padding-right: 5px
+}
+
+.active {
+    color: red;
+}
+
+.button {
+    padding: 5px;
+}
+
+.buttonLeft {
+    margin-left: auto;
+}
+
+.buttonRight {
+    margin-right: auto;
+
+}
