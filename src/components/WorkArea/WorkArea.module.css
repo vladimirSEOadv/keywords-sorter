@@ -5,11 +5,24 @@
     border: 1px solid black;
     border-radius: 15px;
     padding: 15px;
-    width: 380px;
+    width: 100%;
+    max-width: 550px;
     min-height: 85vh;
     max-height: 86vh;
-
 }
+
+@media screen and (max-width: 1280px) {
+    .workArea {
+        width: 45%;
+    }
+}
+
+@media screen and (max-width: 818px) {
+    .workArea {
+        width: 100%;
+    }
+}
+
 .active {
     border: 2px solid chartreuse;
 }

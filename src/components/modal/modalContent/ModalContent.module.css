@@ -1,0 +1,46 @@
+.modalWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+}
+
+.textArea__wrapper {
+    height: 100%;
+}
+
+.textArea__content {
+    height: auto;
+    min-height: 50px;
+    width: 100%;
+    resize: none;
+}
+
+.textArea__header {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    position: relative;
+}
+
+.textArea__header_title {
+    font-size: 26px;
+}
+
+.textArea__footer {
+    margin-top: 15px;
+}
+
+.textArea__save_btn {
+    border: 1px solid green;
+    background-color: rgba(81,250,32,0.25);
+}
+
+.textArea__close_btn {
+    position: absolute;
+    font-size: 12px;
+    right: 0;
+    top: 0;
+    border: 1px solid red;
+    background-color: rgba(255, 2, 40, 0.25);
+}

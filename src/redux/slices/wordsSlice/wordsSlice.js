@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { data } from "../testData/data";
-import { groups } from "../testData/groups";
+import { initialData } from "../../../testData/initialData";
 
 const mainObj = {
   groups: {
@@ -10,7 +9,7 @@ const mainObj = {
     },
     1: {
       groupName: "Необработанные ключи",
-      keys: [...data],
+      keys: [...initialData],
     },
     2: {
       groupName: "Целевые слова",
@@ -23,7 +22,7 @@ const initialState = {
   data: mainObj,
   groups: ["Минус слова", "Необработанные ключи", "Целевые слова"],
   activeArea: 1,
-  activeWord: data[0].name,
+  activeWord: initialData[0].name,
 };
 
 export const wordsSlice = createSlice({
@@ -35,17 +34,16 @@ export const wordsSlice = createSlice({
         action.payload;
       const movedKeyWord = { ...keyword };
       movedKeyWord.group = targetGroupName;
-      const groupKeysAfterAdd = [
+
+      state.data.groups[targetGroupId].keys = [
         ...state.data.groups[targetGroupId].keys,
         movedKeyWord,
       ];
-      state.data.groups[targetGroupId].keys = groupKeysAfterAdd;
       const currentGroupKeys = state.data.groups[groupId].keys;
 
-      const groupKeysAfterDelete = currentGroupKeys.filter(
+      state.data.groups[groupId].keys = currentGroupKeys.filter(
         (item) => item.name !== movedKeyWord.name
       );
-      state.data.groups[groupId].keys = groupKeysAfterDelete;
       state.activeWord = movedKeyWord.name;
     },
     setActiveArea(state, action) {
@@ -54,9 +52,29 @@ export const wordsSlice = createSlice({
     setActiveWord(state, action) {
       state.activeWord = action.payload;
     },
+    addNewWords(state, action) {
+      const { groupNumber, words } = action.payload;
+
+      const wordsForAdding = [];
+      words.forEach((word) => {
+        wordsForAdding.push({
+          name: word,
+          group: state.data.groups[groupNumber].groupName,
+        });
+      });
+
+      state.data.groups[groupNumber].keys =
+        state.data.groups[groupNumber].keys.concat(wordsForAdding);
+      console.log(
+        "active word",
+        wordsForAdding[wordsForAdding.length - 1].name
+      );
+      state.activeWord = wordsForAdding[wordsForAdding.length - 1].name;
+    },
   },
 });
 
-export const { setActiveArea, setActiveWord, changeGroup } = wordsSlice.actions;
+export const { setActiveArea, setActiveWord, changeGroup, addNewWords } =
+  wordsSlice.actions;
 
 export default wordsSlice.reducer;

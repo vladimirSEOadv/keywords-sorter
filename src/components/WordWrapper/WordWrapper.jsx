@@ -1,7 +1,11 @@
 import React from "react";
 import styles from "./WordWrapper.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveWord, changeGroup } from "../../redux/wordsSlice"; //
+import {
+  setActiveWord,
+  changeGroup,
+} from "../../redux/slices/wordsSlice/wordsSlice";
+import { selectActiveWord } from "../../redux/slices/wordsSlice/selectors";
 
 export const WordWrapper = ({ keyword, groupId }) => {
   const name = keyword.name;
@@ -9,8 +13,8 @@ export const WordWrapper = ({ keyword, groupId }) => {
   const haveNext = groups.length > groupId + 1;
   const havePrev = groups.length && groupId > 0;
 
-  const { activeWord } = useSelector((state) => state.words);
-  const classes = `${name === activeWord ? styles.active : ""}`;
+  const activeWord = useSelector(selectActiveWord);
+  const classesForWord = `${name === activeWord ? styles.active : ""}`;
   const dispatch = useDispatch();
 
   return (
@@ -32,7 +36,7 @@ export const WordWrapper = ({ keyword, groupId }) => {
         {"<"}
       </button>
 
-      <div className={classes}>{name}</div>
+      <div className={classesForWord}>{name}</div>
 
       <button
         disabled={!haveNext}

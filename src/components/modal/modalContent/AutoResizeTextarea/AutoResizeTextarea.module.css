@@ -1,0 +1,26 @@
+.auto_resize_textarea {
+    width: 100%;
+    height: auto;
+    min-height: 50px;
+    max-height: 80vh;
+    resize: none;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.auto_resize_textarea::-webkit-scrollbar {
+    width: 8px; /* Ширина скроллбара */
+}
+
+.auto_resize_textarea::-webkit-scrollbar-track {
+    background-color: transparent; /* Цвет фона трека скроллбара */
+}
+
+.auto_resize_textarea::-webkit-scrollbar-thumb {
+    background-color: #888; /* Цвет полосы скроллбара */
+    border-radius: 5px; /* Скругление углов полосы скроллбара */
+}
+
+.auto_resize_textarea::-webkit-scrollbar-thumb:hover {
+    background-color: black; /* Изменение цвета при наведении */
+}

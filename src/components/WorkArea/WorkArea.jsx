@@ -2,14 +2,18 @@ import React, { useState } from "react";
 import { WordWrapper } from "../WordWrapper/WordWrapper";
 import styles from "./WorkArea.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { setActiveArea } from "../../redux/wordsSlice";
-import { current } from "@reduxjs/toolkit";
+import { setActiveArea } from "../../redux/slices/wordsSlice/wordsSlice";
+import { useModalContext } from "../modal/modalContextProvider/ModalContextProvider";
+import { selectActiveArea } from "../../redux/slices/wordsSlice/selectors";
 
 export const WorkArea = ({ title, groupId, words }) => {
   const [search, setSearch] = useState("");
   const wordsLength = words.length;
-  const { activeArea } = useSelector((state) => state.words);
+  const activeArea = useSelector(selectActiveArea);
+
   const dispatch = useDispatch();
+  const { changeModalStatus } = useModalContext();
+
   return (
     <div
       className={`${styles.workArea} ${
@@ -51,7 +55,12 @@ export const WorkArea = ({ title, groupId, words }) => {
             );
           })}
       </div>
-      <button className={styles.addNewButton}>Add new</button>
+      <button
+        className={styles.addNewButton}
+        onClick={() => changeModalStatus(true)}
+      >
+        Add new
+      </button>
     </div>
   );
 };

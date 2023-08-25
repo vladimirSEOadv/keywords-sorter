@@ -4,10 +4,12 @@
     align-items: center;
     padding-right: 5px;
     font-size: 14px;
+    cursor: pointer;
 }
 
 .active {
     color: red;
+    font-weight: bold;
 }
 
 .button {
@@ -20,5 +22,4 @@
 
 .buttonRight {
     margin-right: auto;
-
 }
